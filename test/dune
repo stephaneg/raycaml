@@ -1,2 +1,5 @@
-(test
- (name test_raycaml))
+(library
+ (name test_raycaml)
+ (inline_tests)
+ (preprocess (pps ppx_expect))
+ )
