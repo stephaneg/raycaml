@@ -28,7 +28,7 @@ module Image = struct
   type t = { pixels: Pixel.t array array}
 
   let create ~height ~width ~f =
-    let pixels = Array.make_matrix ~dimx:width ~dimy:height Pixel.zero in
+    let pixels = Array.make_matrix ~dimx:height ~dimy:width Pixel.zero in
     for row = 0 to height-1 do
       for col = 0 to width-1 do
         pixels.(row).(col) <- f ~row ~col
@@ -43,7 +43,7 @@ module Image = struct
     F.fprintf fmt "P3@\n%d %d@\n255@\n" num_cols num_rows;
     for row = 0 to num_rows -1 do
       for col = 0 to num_cols -1 do
-        F.fprintf fmt "%a" Pixel.pp_ppm pixels.(row).(col);
+        F.fprintf fmt "%a@\n" Pixel.pp_ppm pixels.(row).(col);
       done
     done
 end
