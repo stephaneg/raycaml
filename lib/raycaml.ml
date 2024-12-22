@@ -14,7 +14,7 @@ module Pixel = struct
 
   let r t = (t lsr 16)
   let g t = (t lsr 8) land 255
-  let b t = (t lsr 16) land 255
+  let b t = t land 255
 
   let zero = create (0, 0, 0)
 
