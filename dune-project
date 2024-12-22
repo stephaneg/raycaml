@@ -17,8 +17,8 @@
 
 (package
  (name raycaml)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "Raytracing")
+ (description "RayTracing in OCaml")
  (depends ocaml)
  (tags
   ("add topics" "to describe" your project)))
