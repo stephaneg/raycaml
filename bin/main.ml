@@ -16,6 +16,19 @@ let sample_image() =
   in
   Image.create ~height:image_height ~width:image_width ~f:render
 
+let raytraced_image () =
+  let aspect_ratio = 16.0 /. 9.0 in 
+  let image_width = 400 in
+  (* calculate the image height *)
+  let image_height = float_of_int image_width /. aspect_ratio |> int_of_float in
+  let viewport_height = 2.0 in
+  let viewport_width =
+    viewport_height *. (float_of_int image_width /. float_of_int image_height)
+  in
+  let camera_center = Point3d.(0., 0., 0.) in 
+  
+  (* create the image *)
+  Image.create ~height:image_height ~width:image_width ~f:(fun ~row ~col -> Pixel.create (row, col, 0))
 
 let () = 
   let oc = Out_channel.open_text "sample.ppm" in
